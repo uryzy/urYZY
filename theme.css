@@ -118,8 +118,7 @@ body:after{
     radial-gradient(circle at 82% 72%,rgba(132,116,95,.035),transparent 28%);
   opacity:.8;
   transform:translate3d(0,0,0) scale(1);
-  animation:ambient-drift 24s var(--ease-in-out) infinite alternate;
-  will-change:transform;
+  opacity:.45;
 }
 
 .ambient-art{
@@ -131,28 +130,17 @@ body:after{
   background-position:center;
   background-size:cover;
   background-repeat:no-repeat;
-  filter:grayscale(.55) saturate(.72) contrast(.92) blur(1px);
-  transform:scale(1.04);
-  transition:opacity 1.8s var(--ease-in-out),filter 1.8s ease;
-  will-change:opacity;
+  filter:grayscale(.45) saturate(.75) contrast(.95);
+  transition:opacity 1.2s ease;
 }
 
 .ambient-art.is-ready.is-current{
-  opacity:.34;
-}
-
-.ambient-art.is-current{
-  animation:ambient-art-breathe 12s var(--ease-in-out) both;
-}
-
-@keyframes ambient-art-breathe{
-  from{transform:scale(1.04) translate3d(-.5%,0,0);}
-  to{transform:scale(1.08) translate3d(.5%,-.5%,0);}
+  opacity:.22;
 }
 
 @keyframes ambient-drift{
-  from{transform:translate3d(-1.5%,1%,0) scale(1);}
-  to{transform:translate3d(1.5%,-1%,0) scale(1.04);}
+  from{transform:translate3d(-.5%,.25%,0);}
+  to{transform:translate3d(.5%,-.25%,0);}
 }
 
 /* ==========================================================================

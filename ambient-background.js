@@ -79,8 +79,15 @@
     document.body.insertBefore(first,document.body.firstChild);
     document.body.insertBefore(second,document.body.firstChild);
     layers=[first,second];
-    cycle();
-    changeTimer=window.setInterval(cycle,12000);
+    var begin=function(){
+      cycle();
+      changeTimer=window.setInterval(cycle,20000);
+    };
+    if("requestIdleCallback" in window){
+      window.requestIdleCallback(begin,{timeout:1200});
+    }else{
+      window.setTimeout(begin,120);
+    }
     if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){
       window.clearInterval(changeTimer);
     }
