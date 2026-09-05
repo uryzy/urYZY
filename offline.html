@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#b46d43">
+<title>urYZY [OFFLINE]</title>
+<link rel="icon" type="image/png" href="/assets/NO_CIERTO_BESAME_MAMA.png">
+
+<style>
+@font-face{
+  font-family:Yeezy;
+  src:url("/fonts/yeezy_tstar-regular-webfont.woff") format("woff");
+  font-weight:400;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:Yeezy;
+  src:url("/fonts/yeezy_tstar-bold-webfont.woff") format("woff");
+  font-weight:700;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:AwesomePolar;
+  src:url("/assets/AwesomeBi_polar-Regular.otf") format("opentype");
+  font-weight:400;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:OldEnglish;
+  src:local("Old English Text MT"),local("UnifrakturCook");
+  font-weight:400;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0;
+}
+
+html{
+  overflow:hidden;
+}
+
+body{
+  overflow:hidden;
+  color:#fff;
+  font-family:Yeezy,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+
+background:
+    linear-gradient(
+        180deg,
+        rgba(38,24,58,.23),
+        rgba(152,63,107,.12) 46%,
+        rgba(242,151,74,.2)
+    ),
+    url("/assets/BULLYLP.png") center center / cover no-repeat fixed;
+
+  opacity:1;
+  transform:scale(1);
+
+  transition:
+    opacity .9s cubic-bezier(.16,1,.3,1),
+    transform 1.2s cubic-bezier(.16,1,.3,1);
+}
+
+body.ready{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* soft photographic haze */
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(32,20,48,.18),
+      transparent 35%,
+      rgba(222,70,104,.08) 70%,
+      rgba(255,180,92,.12)
+    ),
+    url("/assets/BULLYLP.png") center / cover no-repeat;
+
+  opacity:.34;
+  mix-blend-mode:screen;
+  will-change:transform;
+  animation:sky-drift 28s ease-in-out infinite alternate;
+  transform:translate3d(-2%,0,0) scale(1.08);
+}
+
+@keyframes sky-drift{
+  from{
+    transform:translate3d(-2%,0,0) scale(1.08);
+  }
+
+  to{
+    transform:translate3d(2%,-.5%,0) scale(1.08);
+  }
+}
+
+/* subtle film grain */
+body:after{
+  content:"";
+  position:fixed;
+  inset:-50%;
+  pointer-events:none;
+
+  opacity:.11;
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+  mix-blend-mode:soft-light;
+}
+
+/* very subtle vignette */
+.vignette{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 45%,
+      rgba(30,8,39,.22) 100%
+    );
+
+  z-index:2;
+}
+
+.page{
+  width:100%;
+  height:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:24px;
+
+  position:relative;
+  z-index:5;
+}
+
+.content{
+  width:min(500px,100%);
+  text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  padding:28px 30px 30px;
+}
+
+/* tiny archive label */
+.archive{
+  margin-bottom:18px;
+
+  padding:0;
+
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:4px;
+  text-transform:uppercase;
+
+  color:rgba(255,226,169,.86);
+
+  text-shadow:
+    0 2px 12px rgba(39,8,51,.5);
+}
+
+/* logo */
+.logo-wrap{
+  position:relative;
+
+  width:150px;
+  height:150px;
+
+  display:grid;
+  place-items:center;
+
+  margin-bottom:20px;
+}
+
+.logo-wrap:before{
+  content:"";
+
+  position:absolute;
+
+  width:130px;
+  height:130px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,238,186,.22),
+      rgba(255,168,201,.12) 45%,
+      transparent 72%
+    );
+
+  filter:blur(18px);
+}
+
+.logo{
+  position:relative;
+  z-index:2;
+
+  width:125px;
+  height:125px;
+
+  object-fit:contain;
+
+  filter:
+    brightness(1.15)
+    contrast(.92)
+    saturate(.72)
+    drop-shadow(0 16px 30px rgba(44,8,50,.48));
+
+  animation:float 5s ease-in-out infinite;
+}
+
+.logo-wrap:before{
+  display:none;
+}
+
+.logo{
+  visibility:hidden;
+}
+
+.logo-float{
+  position:fixed;
+  z-index:3;
+  top:8%;
+  right:7%;
+  width:125px;
+  height:125px;
+  object-fit:contain;
+  transform-style:preserve-3d;
+  perspective:500px;
+  filter:
+    brightness(1.12)
+    contrast(.94)
+    drop-shadow(0 16px 26px rgba(15,31,54,.55));
+  will-change:transform;
+  transform:rotateY(0deg) rotateZ(-4deg) translateY(0);
+  animation:planet-spin 10s linear infinite;
+}
+
+@keyframes planet-spin{
+  from{
+    transform:rotateY(0deg) rotateZ(-4deg) translateY(0);
+  }
+
+  to{
+    transform:rotateY(360deg) rotateZ(-4deg) translateY(0);
+  }
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-7px);
+  }
+}
+
+/* connection lost */
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:11px;
+
+  margin-bottom:10px;
+
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  color:rgba(255,222,169,.86);
+
+  text-shadow:
+    0 2px 12px rgba(47,8,55,.55);
+}
+
+.eyebrow:before,
+.eyebrow:after{
+  content:"";
+
+  width:24px;
+  height:1px;
+
+  background:rgba(255,221,157,.72);
+}
+
+h1{
+  margin:0;
+
+  font-size:clamp(48px,9vw,78px);
+  line-height:.82;
+
+  font-family:AwesomePolar,Yeezy,sans-serif;
+  font-weight:400;
+  letter-spacing:0;
+
+  color:#fff;
+
+  text-shadow:
+    0 3px 0 rgba(74,24,75,.22),
+    0 10px 34px rgba(55,8,55,.48);
+}
+
+.description{
+  width:min(350px,100%);
+
+  margin:17px auto 0;
+
+  font-size:13px;
+  line-height:1.55;
+
+  color:#aaa69f;
+
+  text-shadow:
+    0 2px 12px rgba(46,7,53,.5);
+}
+
+/* offline indicator */
+.status{
+  margin-top:22px;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:8px 12px;
+
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.06);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  color:#dedbd4;
+
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  box-shadow:
+    0 8px 30px rgba(51,8,57,.14);
+}
+
+.status-dot{
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  box-shadow:
+    0 0 10px rgba(255,255,255,.7);
+
+  animation:blink 1.8s ease-in-out infinite;
+}
+
+@keyframes blink{
+  0%,100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.35;
+  }
+}
+
+/* retry */
+.retry{
+  margin-top:15px;
+
+  height:40px;
+  padding:0 19px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.17);
+  color:#fff;
+
+  font-family:AwesomePolar,Yeezy,sans-serif;
+
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+
+  backdrop-filter:blur(16px) saturate(145%);
+  -webkit-backdrop-filter:blur(16px) saturate(145%);
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 12px 35px rgba(16,28,47,.3),
+    inset 0 1px 0 rgba(255,255,255,.28);
+
+  transition:
+    transform .3s cubic-bezier(.22,1,.36,1),
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+.retry:hover{
+  background:rgba(255,255,255,.26);
+  color:#fff;
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 17px 40px rgba(46,9,53,.34);
+}
+
+.retry:active{
+  transform:translateY(0) scale(.97);
+}
+
+.retry-icon{
+  display:inline-block;
+
+  font-size:15px;
+  line-height:1;
+
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+.retry.spinning .retry-icon{
+  transform:rotate(360deg);
+}
+
+/* bottom text */
+.footer{
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:22px;
+
+  text-align:center;
+
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:3px;
+
+  color:rgba(255,220,173,.62);
+
+  text-transform:uppercase;
+
+  text-shadow:
+    0 2px 10px rgba(48,7,55,.5);
+
+  z-index:10;
+}
+
+@media(max-width:600px){
+
+  .page{
+    padding:22px;
+  }
+
+  .content{
+    padding:22px 8px 24px;
+  }
+
+  .logo-wrap{
+    width:125px;
+    height:125px;
+    margin-bottom:16px;
+  }
+
+  .logo{
+    width:105px;
+    height:105px;
+  }
+
+  h1{
+    font-size:48px;
+    letter-spacing:-3px;
+  }
+
+  .description{
+    max-width:300px;
+    font-size:12px;
+  }
+
+  .footer{
+    bottom:15px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  body,
+  body:before,
+  .logo,
+  .logo-float,
+  .status-dot,
+  .retry,
+  .retry-icon{
+    animation:none;
+    transition:none;
+  }
+}
+
+/* BULLY offline direction */
+body{
+  color:#f0eee8;
+  background:
+    linear-gradient(115deg,rgba(0,0,0,.98) 0%,rgba(0,0,0,.72) 43%,rgba(255,255,255,.1) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.9)),
+    url("/assets/BULLYLP.png") center / cover fixed;
+}
+
+body:before{
+  display:none;
+}
+
+.logo-float{
+  filter:grayscale(1) contrast(1.18) drop-shadow(0 16px 28px rgba(0,0,0,.72));
+}
+
+h1{
+  font-family:OldEnglish,Georgia,serif;
+  color:#fff;
+}
+
+    0 2px 0 rgba(0,0,0,.55),
+    0 12px 34px rgba(0,0,0,.72);
+}
+
+.retry{
+  border-color:rgba(255,255,255,.18);
+  border-radius:3px;
+  background:rgba(20,20,20,.84);
+  color:#fff;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+.retry:hover{
+  border-color:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.12);
+  color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<img class="logo-float" src="/assets/LOGO2.png" alt="">
+
+<div class="vignette"></div>
+
+<main class="page">
+
+  <div class="content">
+
+    <div class="logo-wrap">
+      <img
+        class="logo"
+        src="/assets/LOGO2.png"
+        alt="urYZY"
+      >
+    </div>
+
+    <h1>No connection.</h1>
+
+    <p class="description">
+      urYZY couldn't connect to the internet.
+      Check your connection and try again.
+    </p>
+
+    <button
+      class="retry"
+      id="retryBtn"
+      type="button"
+    >
+      <span class="retry-icon">⟳</span>
+      <span>Try Again</span>
+    </button>
+
+  </div>
+
+</main>
+
+<script>
+requestAnimationFrame(function(){
+  document.body.classList.add("ready");
+});
+
+document.getElementById("retryBtn").addEventListener("click",function(){
+
+  this.classList.add("spinning");
+
+  setTimeout(function(){
+    location.reload();
+  },260);
+
+});
+</script>
+
+</body>
+</html>

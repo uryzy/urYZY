@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" type="image/png" href="/assets/NO_CIERTO_BESAME_MAMA.png">
+<link rel="stylesheet" href="/theme.css">
+<title>urYZY [HOME]</title>
+
+<style>
+/* ---- page-specific styles only; everything shared lives in theme.css ---- */
+
+.hero{
+  min-height:calc(100vh - var(--container-pad) - 90px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.logo-wrap{
+  position:relative;
+  width:170px;
+  height:170px;
+  display:grid;
+  place-items:center;
+  margin-bottom:34px;
+}
+
+.logo-wrap:before{
+  content:"";
+  position:absolute;
+  width:125px;
+  height:70px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  filter:blur(55px);
+}
+
+.logo{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 28px 55px rgba(0,0,0,.62))
+    drop-shadow(0 0 45px rgba(255,255,255,.055));
+  animation:hero-float 6s ease-in-out infinite;
+}
+
+@keyframes hero-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+
+h1{
+  margin:0;
+  font-size:clamp(70px,11vw,126px);
+  line-height:.78;
+  letter-spacing:-7px;
+  font-weight:700;
+  text-transform:lowercase;
+}
+
+.subtitle{
+  max-width:460px;
+  margin:20px auto 0;
+  color:#aaa69f;
+  font-size:14px;
+  line-height:1.65;
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+  margin-top:28px;
+}
+
+/* subtle stat strip beneath the fold — new, but same visual language */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:11px;
+  margin-top:64px;
+  padding-top:34px;
+  border-top:1px solid var(--line);
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat-value{
+  font-size:26px;
+  font-weight:700;
+  letter-spacing:-1px;
+}
+
+.stat-label{
+  margin-top:6px;
+  color:var(--dim);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+/* recently added strip */
+.recent{
+  margin-top:56px;
+}
+
+.recent-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+
+.recent-title{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:-.2px;
+}
+
+.recent-link{
+  color:var(--dim);
+  text-decoration:none;
+  font-size:10px;
+  font-weight:700;
+  transition:color var(--dur-fast) ease;
+}
+
+.recent-link:hover{
+  color:var(--text);
+}
+
+.recent-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+
+.recent-item{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.recent-icon{
+  flex:0 0 auto;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:9px;
+  background:#181a1f;
+  color:#707680;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.5px;
+  overflow:hidden;
+}
+
+.recent-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.recent-info{
+  min-width:0;
+}
+
+.recent-name{
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:-.1px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.recent-tag{
+  margin-top:3px;
+  color:var(--dim);
+  font-size:9px;
+}
+
+@media(max-width:760px){
+  .recent-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .logo{animation:none}
+}
+
+@media(max-width:560px){
+  .logo-wrap{
+    width:125px;
+    height:125px;
+    margin-bottom:28px;
+  }
+
+  h1{
+    font-size:58px;
+    letter-spacing:-4px;
+  }
+
+  .subtitle{
+    font-size:11px;
+  }
+
+  .actions{
+    margin-top:23px;
+    width:100%;
+    flex-direction:column;
+  }
+
+  .actions .btn{
+    width:100%;
+  }
+
+  .stats{
+    margin-top:44px;
+    padding-top:26px;
+  }
+
+  .stat-value{
+    font-size:20px;
+  }
+}
+</style>
+</head>
+
+<body data-page="home">
+
+<nav class="nav">
+  <div class="nav-slider"></div>
+  <a href="/" class="active" data-page="home">Home</a>
+  <a href="/downloads" data-page="downloads">Downloads</a>
+  <a href="/updates" data-page="updates">Updates</a>
+</nav>
+
+<main class="container u-view">
+
+  <section class="hero">
+    <div class="hero-inner u-stagger">
+
+      <div class="logo-wrap">
+        <img class="logo" src="/assets/LOGO2.png" alt="urYZY" width="170" height="170">
+      </div>
+
+      <div class="kicker">urYZY / Independent archive</div>
+
+      <h1>urYZY</h1>
+
+      <p class="subtitle">
+        A living index of releases, recordings, and material from the Yeezy era.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="/downloads" data-page="downloads">
+          Explore the archive
+        </a>
+        <a class="btn" href="/updates" data-page="updates">
+          See what changed
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="stats u-stagger" id="statsStrip">
+    <div class="stat">
+      <div class="stat-value" id="statFiles">—</div>
+      <div class="stat-label">Files Archived</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="statProjects">—</div>
+      <div class="stat-label" id="statProjectsLabel">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">4</div>
+      <div class="stat-label">Recent Updates</div>
+    </div>
+  </section>
+
+  <section class="recent u-stagger">
+    <div class="recent-head">
+      <div class="recent-title">Latest additions</div>
+      <a class="recent-link" href="/downloads" data-page="downloads">Open archive <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="recent-grid" id="recentGrid"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="siteFooter"></footer>
+
+<div class="route-veil" id="routeVeil">
+  <div class="route-veil-ring"></div>
+  <img class="route-veil-logo" id="routeVeilLogo" src="/assets/logo.png" alt="">
+  <div class="route-veil-bar"><div class="route-veil-bar-fill"></div></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+// same dataset shape as /downloads — kept minimal here since this page
+// only needs it for the stat strip + recently-added preview.
+var files=[
+  {name:"BULLY [EARLY]",icon:"BULLYEARLY.png",project:"BULLY"},
+  {name:"BULLY [FIRST]",icon:"BULLY1.png",project:"BULLY"},
+  {name:"BULLY [SECOND]",icon:"BULLY2.png",project:"BULLY"},
+  {name:"BULLY [THIRD]",icon:"BULLY3.png",project:"BULLY"},
+  {name:"BULLY [IRKO]",icon:"NO_CIERTO_BESAME_MAMA.png",project:"BULLY"},
+  {name:"BULLY [DELUXE]",icon:"BULLYDELUXE.png",project:"BULLY"},
+  {name:"BULLY [DIGITAL FIRST]",icon:"BULLYDG.png",project:"BULLY"},
+  {name:"BULLY [LISTENING PARTY]",icon:"BULLYLP.png",project:"BULLY"},
+  {name:"BULLY [PHYSICAL VERSION]",icon:"BULLYPV.png",project:"BULLY"},
+  {name:"IN A PERFECT WORLD",icon:"IAPW.png",project:"IAPW"},
+  {name:"IN A PERFECT WORLD [EARLY]",icon:"IAPWE.png",project:"IAPW"}
+];
+
+function escapeHTML(value){
+  return String(value==null?"":value).replace(/[&<>"']/g,function(ch){
+    return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[ch];
+  });
+}
+
+var projectCount=new Set(files.map(function(f){return f.project;})).size;
+
+document.getElementById("statFiles").textContent=files.length;
+document.getElementById("statProjects").textContent=projectCount;
+document.getElementById("statProjectsLabel").textContent=
+  projectCount===1?"Project":"Projects";
+
+var recent=files.slice(-3).reverse();
+
+document.getElementById("recentGrid").innerHTML=recent.map(function(file){
+  return ''+
+    '<a class="recent-item surface-card" href="/downloads" data-page="downloads">'+
+      '<div class="recent-icon">'+
+        '<img src="/assets/'+escapeHTML(file.icon)+'" alt="" '+
+          'onerror="this.style.display=\'none\';this.parentElement.textContent=\'ZIP\'">'+
+      '</div>'+
+      '<div class="recent-info">'+
+        '<div class="recent-name">'+escapeHTML(file.name)+'</div>'+
+        '<div class="recent-tag">'+escapeHTML(file.project)+'</div>'+
+      '</div>'+
+    '</a>';
+}).join("");
+})();
+</script>
+<script src="/footer.js"></script>
+<script src="/transitions.js"></script>
+</body>
+</html>
