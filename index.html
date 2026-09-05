@@ -200,6 +200,195 @@ h1{
   font-size:9px;
 }
 
+/* homepage update modal */
+.welcome-modal{
+  position:fixed;
+  inset:0;
+  z-index:600;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:rgba(0,0,0,.58);
+  backdrop-filter:blur(14px) saturate(80%);
+  -webkit-backdrop-filter:blur(14px) saturate(80%);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity var(--dur-base) ease,visibility var(--dur-base) ease;
+}
+
+.welcome-modal.is-visible{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.welcome-card{
+  position:relative;
+  width:min(560px,100%);
+  padding:28px 30px 24px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025)),
+    rgba(13,14,17,.94);
+  box-shadow:0 30px 80px rgba(0,0,0,.62),inset 0 1px 0 rgba(255,255,255,.06);
+  transform:translateY(12px) scale(.97);
+  transition:transform var(--dur-slow) var(--ease-spring);
+}
+
+.welcome-card:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:30px;
+  right:30px;
+  height:2px;
+  border-radius:0 0 4px 4px;
+  background:#fff;
+  box-shadow:0 0 22px rgba(255,255,255,.24);
+}
+
+.welcome-modal.is-visible .welcome-card{
+  transform:translateY(0) scale(1);
+}
+
+.welcome-kicker{
+  color:#aeb2b9;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.welcome-top{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:12px;
+  padding-right:42px;
+}
+
+.welcome-badge{
+  display:inline-flex;
+  align-items:center;
+  height:23px;
+  padding:0 9px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  color:#090a0c;
+  background:#fff;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.2px;
+}
+
+.welcome-title{
+  margin:16px 42px 0 0;
+  color:#fff;
+  font-size:clamp(28px,5vw,36px);
+  line-height:.95;
+  letter-spacing:-1.2px;
+}
+
+.welcome-copy{
+  margin:22px 0 0;
+  color:#f0f0f1;
+  font-size:14px;
+  font-weight:700;
+}
+
+.welcome-copy.secondary{
+  margin-top:7px;
+  color:#9da2ac;
+  font-size:12px;
+  font-weight:400;
+  line-height:1.6;
+}
+
+.welcome-divider{
+  height:1px;
+  margin-top:22px;
+  background:rgba(255,255,255,.1);
+}
+
+.welcome-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:17px;
+}
+
+.welcome-meta{
+  color:#666c76;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+}
+
+.welcome-continue{
+  height:34px;
+  padding:0 14px;
+  border:1px solid #fff;
+  border-radius:7px;
+  background:#fff;
+  color:#080808;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background var(--dur-fast) ease,transform var(--dur-fast) ease;
+}
+
+.welcome-continue:hover{
+  background:#dcdde0;
+  transform:translateY(-1px);
+}
+
+.welcome-continue:focus-visible{
+  outline:2px solid rgba(255,255,255,.7);
+  outline-offset:3px;
+}
+
+.welcome-close{
+  position:absolute;
+  top:17px;
+  right:17px;
+  width:31px;
+  height:31px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  background:rgba(255,255,255,.045);
+  color:#c9cbd0;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:19px;
+  line-height:1;
+  cursor:pointer;
+  transition:background var(--dur-fast) ease,border-color var(--dur-fast) ease,color var(--dur-fast) ease,transform var(--dur-fast) ease;
+}
+
+.welcome-close:hover{
+  border-color:rgba(255,255,255,.28);
+  background:#fff;
+  color:#080808;
+  transform:rotate(90deg);
+}
+
+.welcome-close:focus-visible{
+  outline:2px solid rgba(255,255,255,.7);
+  outline-offset:3px;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .welcome-modal,.welcome-card,.welcome-close{
+    transition:none;
+  }
+}
+
 @media(max-width:760px){
   .recent-grid{
     grid-template-columns:1fr;
@@ -311,6 +500,20 @@ h1{
 
 <footer class="site-footer" id="siteFooter"></footer>
 
+<div class="welcome-modal" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeDescription">
+  <div class="welcome-card">
+    <button class="welcome-close" id="welcomeClose" type="button" aria-label="Close update">&times;</button>
+    <div class="welcome-top"><div class="welcome-badge">URGNT</div></div>
+    <h2 class="welcome-title" id="welcomeTitle">🥳 NEW WEBSITE LINK</h2>
+    <p class="welcome-copy" id="welcomeDescription">What happened?</p>
+    <p class="welcome-copy secondary">I got a warning and a violation, but we're back up!</p>
+    <div class="welcome-divider"></div>
+    <div class="welcome-footer">
+      <button class="welcome-continue" id="welcomeContinue" type="button">Continue</button>
+    </div>
+  </div>
+</div>
+
 <div class="route-veil" id="routeVeil">
   <div class="route-veil-ring"></div>
   <img class="route-veil-logo" id="routeVeilLogo" src="/assets/logo.png" alt="">
@@ -320,6 +523,32 @@ h1{
 <script>
 (function(){
 "use strict";
+
+var SHOW_WELCOME_CARD=true;
+var welcomeModal=document.getElementById("welcomeModal");
+var welcomeClose=document.getElementById("welcomeClose");
+var welcomeContinue=document.getElementById("welcomeContinue");
+
+function closeWelcome(){
+  if(!welcomeModal)return;
+  welcomeModal.classList.remove("is-visible");
+  window.setTimeout(function(){welcomeModal.setAttribute("aria-hidden","true");},300);
+}
+
+if(welcomeModal&&SHOW_WELCOME_CARD){
+  welcomeModal.setAttribute("aria-hidden","false");
+  window.requestAnimationFrame(function(){welcomeModal.classList.add("is-visible");});
+  welcomeClose.addEventListener("click",closeWelcome);
+  welcomeContinue.addEventListener("click",closeWelcome);
+  welcomeModal.addEventListener("click",function(event){
+    if(event.target===welcomeModal)closeWelcome();
+  });
+  document.addEventListener("keydown",function(event){
+    if(event.key==="Escape")closeWelcome();
+  });
+}else if(welcomeModal){
+  welcomeModal.remove();
+}
 
 // same dataset shape as /downloads — kept minimal here since this page
 // only needs it for the stat strip + recently-added preview.
