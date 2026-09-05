@@ -1,4 +1,4 @@
-const CACHE_NAME = "uryzy-v18";
+const CACHE_NAME = "urYZY-v19";
 
 const STATIC_FILES = [
     "/",

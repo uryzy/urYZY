@@ -2,7 +2,7 @@
 (function(){
   "use strict";
 
-  var STORAGE_KEY="uryzyRoute";
+  var STORAGE_KEY="urYZYRoute";
   var LOGO_HOME="/assets/logo.png";
   var LOGO_OTHER="/assets/LOGO2.png";
   var TRANSITION_SONG="/assets/05%20Bully%20MIX.03_03.mp3";
@@ -168,7 +168,7 @@
   enter();
 
   // expose a tiny hook other page scripts can use if needed
-  window.uryzyRoute={
+  window.urYZYRoute={
     navigate:beginNavigation,
     currentPage:currentPage
   };
