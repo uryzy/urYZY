@@ -1,17 +1,17 @@
-const CACHE_NAME = "uryzy-v17";
+const CACHE_NAME = "uryzy-v18";
 
 const STATIC_FILES = [
     "/",
     "/index.html",
     "/downloads.html",
     "/updates.html",
+    "/updating.html",
     "/offline.html",
     "/404.html",
     "/theme.css",
     "/footer.js",
     "/transitions.js",
 
-    "/assets/graduation-bg.png",
     "/assets/LOGO2.png",
     "/assets/logo.png",
     "/assets/err.png",

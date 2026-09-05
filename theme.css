@@ -462,6 +462,7 @@ body.is-in .u-stagger > *{
 .nav a:focus-visible,
 .btn:focus-visible,
 .chip:focus-visible,
+.sort-select:focus-visible,
 .download:focus-visible,
 .share:focus-visible,
 .showmore:focus-visible,
@@ -566,6 +567,16 @@ button:focus:not(:focus-visible){
 
   .container{
     width:calc(100% - 24px);
+  }
+
+  .nav{
+    max-width:calc(100% - 24px);
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+
+  .nav::-webkit-scrollbar{
+    display:none;
   }
 
   .btn{

@@ -296,7 +296,7 @@ h1{
       <div class="stat-label" id="statProjectsLabel">Projects</div>
     </div>
     <div class="stat">
-      <div class="stat-value">4</div>
+      <div class="stat-value" id="statUpdates">—</div>
       <div class="stat-label">Recent Updates</div>
     </div>
   </section>
@@ -351,6 +351,7 @@ document.getElementById("statFiles").textContent=files.length;
 document.getElementById("statProjects").textContent=projectCount;
 document.getElementById("statProjectsLabel").textContent=
   projectCount===1?"Project":"Projects";
+document.getElementById("statUpdates").textContent=3;
 
 var recent=files.slice(-3).reverse();
 

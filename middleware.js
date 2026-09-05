@@ -1,16 +1,19 @@
-const OFFLINE_MODE = process.env.OFFLINE_MODE
-    ? process.env.OFFLINE_MODE === "true"
-    : process.env.NODE_ENV === "development" || process.env.VERCEL_ENV !== "production";
+const UPDATE_MODE = process.env.UPDATE_MODE === "true";
+const OFFLINE_MODE = process.env.OFFLINE_MODE === "true";
 
 export default function middleware(request) {
-    if (!OFFLINE_MODE) {
+    if (!UPDATE_MODE && !OFFLINE_MODE) {
         return;
     }
 
     const url = new URL(request.url);
     const pathname = url.pathname;
 
-    if (pathname === "/offline") {
+    if (pathname === "/updating.html" || pathname === "/updating") {
+        return;
+    }
+
+    if (pathname === "/offline.html" || pathname === "/offline") {
         return;
     }
 
@@ -24,6 +27,13 @@ export default function middleware(request) {
 
     if (request.destination !== "document") {
         return;
+    }
+
+    if (UPDATE_MODE) {
+        return Response.redirect(
+            new URL("/updating.html", request.url),
+            307
+        );
     }
 
     return Response.redirect(
