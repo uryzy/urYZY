@@ -1,4 +1,4 @@
-const CACHE_NAME = "urYZY-v19";
+const CACHE_NAME = "urYZY-v29";
 
 const STATIC_FILES = [
     "/",
@@ -17,13 +17,21 @@ const STATIC_FILES = [
     "/assets/err.png",
     "/assets/IAPW.png",
     "/assets/IAPWE.png",
+    "/assets/WAR.jpg",
+    "/assets/BADBITCHPLAYBOOKPREVULTURES1.png",
+    "/assets/BADBITCHPLAYBOOK.png",
+    "/assets/BADBITCHPLAYBOOK2.png",
     "/assets/NO_CIERTO_BESAME_MAMA.png",
     "/assets/BULLYLP.png",
     "/assets/05 Bully MIX.03_03.mp3",
 
     "/fonts/yeezy_tstar-bold-webfont.woff",
     "/fonts/yeezy_tstar-regular-webfont.woff",
-    "/assets/AwesomeBi_polar-Regular.otf"
+    "/assets/AwesomeBi_polar-Regular.otf",
+    "/WAR.zip",
+    "/Bad Bitch Playbook (Pre VULTURES 1).zip",
+    "/Bad Bitch Playbook.zip",
+    "/Bad Bitch Playbook Vol. 2.zip"
 ];
 
 self.addEventListener("install", event => {

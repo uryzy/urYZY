@@ -351,6 +351,16 @@
     top:15px;
     right:15px;
   }
+
+  .update-title{
+    font-size:14px;
+    line-height:1.25;
+  }
+
+  .update-list li{
+    align-items:flex-start;
+    font-size:10px;
+  }
 }
 </style>
 </head>
@@ -362,6 +372,7 @@
   <a href="/" data-page="home">Home</a>
   <a href="/downloads" data-page="downloads">Downloads</a>
   <a href="/updates" class="active" data-page="updates">Updates</a>
+  <a href="/gallery.html" data-page="gallery">Gallery</a>
 </nav>
 
 <main class="container u-view">
@@ -381,6 +392,24 @@
   </header>
 
   <section class="timeline u-stagger" id="timeline">
+
+    <article class="update surface-card">
+      <div class="update-date">SEP 5, 2026</div>
+      <div class="update-content">
+        <h2 class="update-title">New releases and archive polish</h2>
+        <div class="update-description">
+          Added WAR and the Bad Bitch Playbook collection, then refined the downloads experience so the new releases are easier to browse and download.
+          <ul class="update-list">
+            <li><span class="li-tag added">Added</span> WAR with artwork, archive download, and release context</li>
+            <li><span class="li-tag added">Added</span> Bad Bitch Playbook, Pre VULTURES 1, and Vol. 2</li>
+            <li><span class="li-tag added">Added</span> New artwork, ZIP downloads, project filtering, and homepage listings</li>
+            <li><span class="li-tag fixed">Fixed</span> Download-card description visibility and alignment for longer titles</li>
+            <li><span class="li-tag fixed">Fixed</span> Slideshow sizing, cache refreshes, background motion, and card hover flicker</li>
+          </ul>
+        </div>
+      </div>
+      <div class="update-tag" data-kind="added">Major</div>
+    </article>
 
     <article class="update surface-card">
       <div class="update-date">SEP 3, 2026</div>

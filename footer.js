@@ -16,6 +16,7 @@
       '<a href="/">Home</a>'+
       '<a href="/downloads">Downloads</a>'+
       '<a href="/updates">Updates</a>'+
+      '<a href="/gallery.html">Gallery</a>'+
     '</div>'+
     '<div class="foot-disclaimer">'+
       'urYZY is an independent, fan-run archive. Not affiliated with or endorsed by any label or artist. '+
