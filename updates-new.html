@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="/assets/NO_CIERTO_BESAME_MAMA.png">
+<link rel="stylesheet" href="/theme.css">
+<title>urYZY - Updates</title>
+
+<style>
+body { padding-top: 120px; }
+
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; }
+
+.section-head { margin-bottom: 50px; }
+.section-head h1 { margin-bottom: 10px; }
+.section-head p { color: var(--text-secondary); font-size: 15px; }
+
+.updates-list { margin-top: 40px; }
+
+.update-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 25px;
+  margin-bottom: 20px;
+  transition: all var(--ease);
+}
+
+.update-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.update-date {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.update-item h3 {
+  margin-bottom: 12px;
+  margin: 0 0 12px 0;
+}
+
+.update-item p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .update-item { padding: 20px; }
+  .update-item h3 { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/" id="nav-home">Home</a>
+  <a href="/downloads" id="nav-downloads">Downloads</a>
+  <a href="/updates" class="active" id="nav-updates">Updates</a>
+</nav>
+
+<main class="container u-view">
+
+  <div class="section-head">
+    <h1>Updates</h1>
+    <p>Latest news and announcements</p>
+  </div>
+
+  <div class="updates-list" id="updatesList"></div>
+
+</main>
+
+<footer id="siteFooter"></footer>
+
+<script>
+(function() {
+  'use strict';
+
+  const updates = [
+    {
+      date: 'September 5, 2026',
+      title: 'New Simplified Design',
+      description: 'Complete redesign with dynamic theming. When you scroll through albums, the site theme changes to match each album\'s aesthetic. The site is now much faster, cleaner, and has a more human-made feel with rounded corners throughout.'
+    },
+    {
+      date: 'September 1, 2026',
+      title: 'Performance Optimization',
+      description: 'Removed complex animations, heavy gradients, and unnecessary effects. The site is now significantly faster with zero lag. Everything loads instantly and scrolls smoothly.'
+    },
+    {
+      date: 'August 28, 2026',
+      title: 'Visual Refresh',
+      description: 'Redesigned all album cards with rounded corners and subtle hover effects. Improved visual hierarchy, spacing, and typography throughout the entire site.'
+    },
+    {
+      date: 'August 20, 2026',
+      title: 'Album Artwork Updates',
+      description: 'Added high-quality album artwork for all available projects. Each album now displays its cover art prominently in the downloads section.'
+    },
+  ];
+
+  const updatesList = document.getElementById('updatesList');
+  updatesList.innerHTML = updates.map(update => `
+    <div class="update-item">
+      <div class="update-date">${update.date}</div>
+      <h3>${update.title}</h3>
+      <p>${update.description}</p>
+    </div>
+  `).join('');
+
+  // Navigation
+  document.getElementById('nav-home').href = '/';
+  document.getElementById('nav-downloads').href = '/downloads';
+  document.getElementById('nav-updates').href = '/updates';
+
+  // Footer
+  const footer = document.getElementById('siteFooter');
+  const year = new Date().getFullYear();
+  footer.innerHTML = `
+    <p style="text-align: center; color: #888; font-size: 12px; padding: 40px 20px 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+      &copy; ${year} urYZY. An independent, fan-run archive. Not affiliated with or endorsed by any label or artist.
+    </p>
+  `;
+})();
+</script>
+
+<script src="/ambient-background.js"></script>
+</body>
+</html>

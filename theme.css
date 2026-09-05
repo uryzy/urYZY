@@ -107,6 +107,54 @@ body:before{
   opacity:.3;
 }
 
+body:after{
+  content:"";
+  position:fixed;
+  inset:-12%;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 26%,rgba(255,255,255,.035),transparent 24%),
+    radial-gradient(circle at 82% 72%,rgba(132,116,95,.035),transparent 28%);
+  opacity:.8;
+  transform:translate3d(0,0,0) scale(1);
+  animation:ambient-drift 24s var(--ease-in-out) infinite alternate;
+  will-change:transform;
+}
+
+.ambient-art{
+  position:fixed;
+  inset:-5%;
+  z-index:0;
+  pointer-events:none;
+  opacity:0;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  filter:grayscale(.55) saturate(.72) contrast(.92) blur(1px);
+  transform:scale(1.04);
+  transition:opacity 1.8s var(--ease-in-out),filter 1.8s ease;
+  will-change:opacity;
+}
+
+.ambient-art.is-ready.is-current{
+  opacity:.34;
+}
+
+.ambient-art.is-current{
+  animation:ambient-art-breathe 12s var(--ease-in-out) both;
+}
+
+@keyframes ambient-art-breathe{
+  from{transform:scale(1.04) translate3d(-.5%,0,0);}
+  to{transform:scale(1.08) translate3d(.5%,-.5%,0);}
+}
+
+@keyframes ambient-drift{
+  from{transform:translate3d(-1.5%,1%,0) scale(1);}
+  to{transform:translate3d(1.5%,-1%,0) scale(1.04);}
+}
+
 /* ==========================================================================
    Page entrance choreography
    .u-view is the single element that fades/scales in per page.
@@ -412,6 +460,8 @@ body.is-in .u-stagger > *{
 }
 
 @media(prefers-reduced-motion:reduce){
+  body:after,
+  .ambient-art,
   .route-veil,.route-veil-logo,.route-veil-ring,.route-veil-bar-fill{
     transition:none !important;
   }

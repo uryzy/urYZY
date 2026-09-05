@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="/assets/NO_CIERTO_BESAME_MAMA.png">
+<link rel="stylesheet" href="/theme.css">
+<title>urYZY - Downloads</title>
+
+<style>
+body { padding-top: 120px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
+
+.section-head { margin-bottom: 50px; }
+.section-head h1 { margin-bottom: 10px; }
+.section-head p { color: var(--text-secondary); font-size: 15px; }
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.album-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  scroll-margin-top: 140px;
+  transition: all var(--ease);
+}
+
+.album-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.album-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.05);
+  display: block;
+}
+
+.album-card-info { padding: 15px; }
+
+.album-card h3 { font-size: 18px; margin-bottom: 5px; margin: 0; }
+
+.album-card p { font-size: 13px; color: var(--text-secondary); margin: 8px 0 0 0; }
+
+.theme-display {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  min-width: 180px;
+  text-align: center;
+}
+
+.theme-display-album { font-weight: 600; color: var(--text); margin: 5px 0; }
+
+@media (max-width: 768px) {
+  .theme-display { bottom: 20px; right: 20px; font-size: 11px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="/" id="nav-home">Home</a>
+  <a href="/downloads" class="active" id="nav-downloads">Downloads</a>
+  <a href="/updates" id="nav-updates">Updates</a>
+</nav>
+
+<main class="container u-view">
+
+  <div class="section-head">
+    <h1>Downloads</h1>
+    <p>Scroll through albums to see the theme change dynamically</p>
+  </div>
+
+  <div class="downloads-grid" id="albumsGrid"></div>
+
+</main>
+
+<div class="theme-display" id="themeDisplay">
+  <div style="font-size: 11px; opacity: 0.7;">Current Theme</div>
+  <div class="theme-display-album" id="themeDisplayName">urYZY</div>
+</div>
+
+<footer id="siteFooter"></footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // Album data with theme colors
+  const albums = [
+    { id: 'bully', name: 'BULLY', image: '/assets/BULLYLP.png', theme: 'bully', colors: { bg: '#2a1a1a', primary: '#ff4444' } },
+    { id: 'bully-dg', name: 'BULLY [DIGITAL]', image: '/assets/BULLYDG.png', theme: 'bully', colors: { bg: '#2a1a1a', primary: '#ff4444' } },
+    { id: 'bully-pv', name: 'BULLY [PHYSICAL]', image: '/assets/BULLYPV.png', theme: 'bully', colors: { bg: '#2a1a1a', primary: '#ff4444' } },
+    { id: 'ww3', name: 'WW3', image: '/assets/WW3.png', theme: 'ww3', colors: { bg: '#1a2a2a', primary: '#44ff44' } },
+    { id: 'cuck', name: 'CUCK', image: '/assets/CUCK.png', theme: 'cuck', colors: { bg: '#2a1a2a', primary: '#ff44aa' } },
+    { id: 'iapw', name: 'IN A PERFECT WORLD', image: '/assets/IAPW.png', theme: 'iapw', colors: { bg: '#2a2a1a', primary: '#ffaa44' } },
+  ];
+
+  const grid = document.getElementById('albumsGrid');
+  const themeDisplay = document.getElementById('themeDisplay');
+  const themeDisplayName = document.getElementById('themeDisplayName');
+
+  // Render albums
+  grid.innerHTML = albums.map(album => `
+    <div class="album-card" data-album-id="${album.id}" data-theme="${album.theme}">
+      <img class="album-card-image" src="${album.image}" alt="${album.name}" />
+      <div class="album-card-info">
+        <h3>${album.name}</h3>
+        <p>Album • Available Now</p>
+      </div>
+    </div>
+  `).join('');
+
+  // Theme switching on scroll/intersection
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const theme = entry.target.dataset.theme;
+        const albumId = entry.target.dataset.albumId;
+        const albumName = albums.find(a => a.id === albumId)?.name || 'urYZY';
+        
+        document.body.className = theme ? `theme-${theme}` : '';
+        themeDisplayName.textContent = albumName;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // Observe all album cards
+  document.querySelectorAll('.album-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  // Navigation
+  document.getElementById('nav-home').href = '/';
+  document.getElementById('nav-downloads').href = '/downloads';
+  document.getElementById('nav-updates').href = '/updates';
+
+  // Footer
+  const footer = document.getElementById('siteFooter');
+  const year = new Date().getFullYear();
+  footer.innerHTML = `
+    <p style="text-align: center; color: #888; font-size: 12px; padding: 40px 20px 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+      &copy; ${year} urYZY. An independent, fan-run archive. Not affiliated with or endorsed by any label or artist.
+    </p>
+  `;
+})();
+</script>
+
+<script src="/ambient-background.js"></script>
+</body>
+</html>

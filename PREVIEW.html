@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>urYZY Preview - New Design</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 60px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav a.active {
+  color: #fff;
+}
+
+.nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -21px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Home Section */
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.hero h2 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero p {
+  color: #aaa;
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #000;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary {
+  border: 1px solid #555;
+  color: #fff;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  border-color: #fff;
+}
+
+/* Downloads Grid */
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #333, #555);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* Theme Preview */
+.theme-preview {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.theme-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+}
+
+.theme-preview h3 {
+  margin-bottom: 10px;
+}
+
+.theme-preview p {
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* Updates List */
+.updates-list {
+  margin-top: 40px;
+}
+
+.update-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.update-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.update-date {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.update-item h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.update-item p {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.feature h4 {
+  margin-bottom: 10px;
+}
+
+.feature p {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.feature strong {
+  color: #fff;
+  display: block;
+  margin: 15px 0 0 0;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>urYZY</h1>
+  <p class="subtitle">New simplified design with dynamic theming</p>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <a href="#" class="nav-link active" onclick="showSection('home'); return false;">Home</a>
+    <a href="#" class="nav-link" onclick="showSection('downloads'); return false;">Downloads</a>
+    <a href="#" class="nav-link" onclick="showSection('updates'); return false;">Updates</a>
+  </div>
+
+  <!-- Home Section -->
+  <div id="home" class="section active">
+    <div class="hero">
+      <h2>urYZY Archive</h2>
+      <p>A clean, minimal archive of music, albums, and updates. Scroll through albums to see the theme change dynamically.</p>
+      <div class="buttons">
+        <button class="btn btn-primary" onclick="showSection('downloads'); return false;">View Downloads</button>
+        <button class="btn btn-secondary">Learn More</button>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🎵</div>
+        <h4>Music & Albums</h4>
+        <p>Browse and explore all your music organized cleanly</p>
+        <strong>Rounded cards</strong>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h4>Dynamic Themes</h4>
+        <p>Theme changes as you scroll through albums</p>
+        <strong>Per-album branding</strong>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h4>Fast & Simple</h4>
+        <p>Minimal design means blazing fast performance</p>
+        <strong>Zero lag</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Downloads Section -->
+  <div id="downloads" class="section">
+    <h2>Downloads</h2>
+    <p class="subtitle">Scroll through albums to see theme changes</p>
+
+    <div class="downloads-grid">
+      <div class="card">
+        <div class="card-image">🎭</div>
+        <h3>BULLY</h3>
+        <p>Album • 15 tracks</p>
+      </div>
+      <div class="card">
+        <div class="card-image">⚔️</div>
+        <h3>WW3</h3>
+        <p>Album • 12 tracks</p>
+      </div>
+      <div class="card">
+        <div class="card-image">💔</div>
+        <h3>CUCK</h3>
+        <p>Album • 10 tracks</p>
+      </div>
+      <div class="card">
+        <div class="card-image">🌍</div>
+        <h3>IAPW</h3>
+        <p>Album • 14 tracks</p>
+      </div>
+      <div class="card">
+        <div class="card-image">🔥</div>
+        <h3>Deluxe</h3>
+        <p>Album • 20 tracks</p>
+      </div>
+      <div class="card">
+        <div class="card-image">✨</div>
+        <h3>Early</h3>
+        <p>Album • 8 tracks</p>
+      </div>
+    </div>
+
+    <div class="theme-preview">
+      <div class="theme-circle" style="background: linear-gradient(135deg, #8B0000, #FF6347);"></div>
+      <h3>BULLY Theme</h3>
+      <p>When scrolling to BULLY, the entire site theme changes to match this album's colors</p>
+    </div>
+  </div>
+
+  <!-- Updates Section -->
+  <div id="updates" class="section">
+    <h2>Updates</h2>
+    <p class="subtitle">Latest news and changes</p>
+
+    <div class="updates-list">
+      <div class="update-item">
+        <div class="update-date">September 5, 2026</div>
+        <h4>New Simplified Design</h4>
+        <p>Complete redesign with dynamic theming. Scroll through albums to see the theme change in real-time. Much faster, cleaner, and more human.</p>
+      </div>
+      <div class="update-item">
+        <div class="update-date">September 1, 2026</div>
+        <h4>Performance Optimization</h4>
+        <p>Removed complex animations and effects. Site is now much faster with zero lag.</p>
+      </div>
+      <div class="update-item">
+        <div class="update-date">August 28, 2026</div>
+        <h4>All Albums Updated</h4>
+        <p>Added rounded corners to all album cards. Improved visual hierarchy and spacing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showSection(sectionId) {
+  // Hide all sections
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  // Show selected
+  document.getElementById(sectionId).classList.add('active');
+  // Update nav
+  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+<script src="/ambient-background.js"></script>
+</body>
+</html>
