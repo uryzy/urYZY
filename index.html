@@ -378,6 +378,86 @@ h1{
   transform:rotate(90deg);
 }
 
+/* classic archive notice */
+.welcome-modal{
+  background:rgba(35,35,28,.42);
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+
+.welcome-card{
+  border:2px outset #f8f1df;
+  border-radius:0;
+  background:#eee8d8;
+  box-shadow:4px 4px 0 rgba(55,51,40,.35);
+}
+
+.welcome-card:before{
+  left:0;
+  right:0;
+  height:3px;
+  border-radius:0;
+  background:#173c58;
+  box-shadow:none;
+}
+
+.welcome-kicker,
+.welcome-meta{
+  color:#8a3e2b;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.welcome-badge{
+  border:1px solid #8b8576;
+  border-radius:0;
+  color:#fffdf2;
+  background:#173c58;
+}
+
+.welcome-title{
+  color:#172c3c;
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:0;
+}
+
+.welcome-copy{
+  color:#252c2f;
+}
+
+.welcome-copy.secondary{
+  color:#4d514f;
+}
+
+.welcome-divider{
+  background:#8b8576;
+}
+
+.welcome-continue{
+  border:2px outset #f8f1df;
+  border-radius:0;
+  background:#173c58;
+  color:#fffdf2;
+}
+
+.welcome-continue:hover{
+  background:#245474;
+  transform:none;
+}
+
+.welcome-close{
+  border:2px outset #f8f1df;
+  border-radius:0;
+  background:#c4bdad;
+  color:#173c58;
+}
+
+.welcome-close:hover{
+  border-color:#f8f1df;
+  background:#d7cfbd;
+  color:#8a3e2b;
+  transform:none;
+}
+
 .welcome-close:focus-visible{
   outline:2px solid rgba(255,255,255,.7);
   outline-offset:3px;
@@ -644,6 +724,7 @@ document.getElementById("recentGrid").innerHTML=recent.map(function(file){
 })();
 </script>
 <script src="/footer.js"></script>
+<script src="/theme-toggle.js"></script>
 <script src="/transitions.js"></script>
 <script src="/ambient-background.js"></script>
 </body>
