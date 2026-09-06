@@ -1,4 +1,4 @@
-const CACHE_NAME = "urYZY-v33";
+const CACHE_NAME = "urYZY-v34";
 
 const STATIC_FILES = [
     "/",
@@ -11,7 +11,6 @@ const STATIC_FILES = [
     "/theme.css",
     "/footer.js",
     "/transitions.js",
-    "/ambient-background.js",
 
     "/assets/LOGO2.png",
     "/assets/logo.png",

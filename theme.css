@@ -10,103 +10,6 @@
   font-display:swap;
 }
 
-.theme-settings{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:300;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-.theme-settings-trigger,
-.theme-settings-panel button{
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:9px;
-  background:rgba(12,13,16,.9);
-  color:#c8cbd1;
-  font:700 10px Arial,Helvetica,sans-serif;
-  cursor:pointer;
-}
-
-.theme-settings-trigger{
-  height:32px;
-  padding:0 12px;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-}
-
-.theme-settings-trigger:hover,
-.theme-settings-panel button:hover,
-.theme-settings-panel button.is-selected{
-  border-color:rgba(255,255,255,.5);
-  background:#fff;
-  color:#08090b;
-}
-
-.theme-settings-panel{
-  position:absolute;
-  right:0;
-  bottom:40px;
-  display:grid;
-  gap:5px;
-  width:150px;
-  padding:9px;
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:9px;
-  background:rgba(12,13,16,.96);
-  box-shadow:0 16px 35px rgba(0,0,0,.35);
-}
-
-.theme-settings-panel[hidden]{
-  display:none !important;
-}
-
-.theme-settings-title{
-  padding:2px 3px 5px;
-  color:#777d87;
-  font-size:9px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.theme-settings-panel button{
-  height:29px;
-  text-align:left;
-  padding:0 9px;
-}
-
-body[data-theme="classic2009"] .theme-settings-trigger,
-body[data-theme="classic2009"] .theme-settings-panel button{
-  border:2px outset #f8f1df;
-  border-radius:0;
-  background:#c4bdad;
-  color:#173c58;
-  box-shadow:1px 1px 0 #625e53;
-}
-
-body[data-theme="classic2009"] .theme-settings-panel{
-  border:1px solid #8b8576;
-  border-radius:0;
-  background:#eee8d8;
-  box-shadow:3px 3px 0 rgba(55,51,40,.28);
-}
-
-body[data-theme="classic2009"] .theme-settings-title{
-  color:#8a3e2b;
-}
-
-body[data-theme="classic2009"] .theme-settings-panel button:hover,
-body[data-theme="classic2009"] .theme-settings-panel button.is-selected{
-  border-color:#173c58;
-  background:#173c58;
-  color:#fffdf2;
-}
-
-@media(max-width:560px){
-  .theme-settings{
-    right:10px;
-    bottom:10px;
-  }
-}
 @font-face{
   font-family:Yeezy;
   src:url("/fonts/yeezy_tstar-bold-webfont.woff") format("woff");
@@ -219,28 +122,6 @@ body:after{
   opacity:.45;
 }
 
-.ambient-art{
-  position:fixed;
-  inset:-5%;
-  z-index:0;
-  pointer-events:none;
-  opacity:0;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  filter:grayscale(.45) saturate(.75) contrast(.95);
-  transition:opacity 1.2s ease;
-}
-
-.ambient-art.is-ready.is-current{
-  opacity:.22;
-}
-
-@keyframes ambient-drift{
-  from{transform:translate3d(-.5%,.25%,0);}
-  to{transform:translate3d(.5%,-.25%,0);}
-}
-
 /* ==========================================================================
    Page entrance choreography
    .u-view is the single element that fades/scales in per page.
@@ -310,14 +191,12 @@ body.is-in .u-stagger > *{
   z-index:200;
   transform:translateX(-50%);
   display:flex;
-  gap:2px;
-  padding:6px;
-  border:1px solid rgba(255,255,255,.085);
-  border-radius:var(--radius-xl);
-  background:rgba(12,13,16,.78);
-  backdrop-filter:blur(24px) saturate(150%);
-  -webkit-backdrop-filter:blur(24px) saturate(150%);
-  box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(255,255,255,.035);
+  gap:0;
+  padding:4px;
+  border:1px solid var(--line-strong);
+  border-radius:10px;
+  background:#101216;
+  box-shadow:0 10px 24px rgba(0,0,0,.24);
 }
 
 .nav-slider{
@@ -327,8 +206,8 @@ body.is-in .u-stagger > *{
   bottom:6px;
   left:0;
   width:0;
-  border-radius:16px;
-  background:rgba(255,255,255,.095);
+  border-radius:7px;
+  background:rgba(255,255,255,.12);
   transition:transform var(--dur-base) var(--ease-spring),width var(--dur-base) var(--ease-spring);
   pointer-events:none;
 }
@@ -342,7 +221,7 @@ body.is-in .u-stagger > *{
   align-items:center;
   justify-content:center;
   padding:0 16px;
-  border-radius:14px;
+  border-radius:7px;
   color:#747a84;
   text-decoration:none;
   font-size:11px;
@@ -559,7 +438,6 @@ body.is-in .u-stagger > *{
 
 @media(prefers-reduced-motion:reduce){
   body:after,
-  .ambient-art,
   .route-veil,.route-veil-logo,.route-veil-ring,.route-veil-bar-fill{
     animation:none !important;
     transition:none !important;
@@ -1231,7 +1109,7 @@ body.is-card-hover .downloads .file.is-art-active{
 }
 
 /* ======================================================================
-   Classic web archive skin
+  Legacy archive skin (kept for old cached markup only)
    ====================================================================== */
 
 @scope (body[data-theme="classic2009"]){
@@ -1292,11 +1170,6 @@ html{
 
 :scope:after{
   display:none;
-}
-
-.ambient-art{
-  opacity:0 !important;
-  filter:sepia(.2) contrast(.9);
 }
 
 .container{
@@ -1655,41 +1528,35 @@ html{
 
 }
 
-/* Optional low-cost rendering mode for slower phones and browsers. */
-body[data-performance="lite"] .ambient-art{
+/* Static performance mode: keep rendering predictable on every device. */
+body:after{
   display:none !important;
 }
 
-body[data-performance="lite"] .surface-card,
-body[data-performance="lite"] .gallery-item,
-body[data-performance="lite"] .theme-settings-panel,
-body[data-performance="lite"] .toast{
+body .surface-card,
+body .gallery-item,
+body .toast{
   box-shadow:none !important;
   backdrop-filter:none !important;
   -webkit-backdrop-filter:none !important;
 }
 
-body[data-performance="lite"] .route-veil:before,
-body[data-performance="lite"] .additions-stage:after{
+body .route-veil:before,
+body .additions-stage:after{
   animation:none !important;
   display:none !important;
 }
 
-body[data-performance="lite"] .route-veil{
+body .route-veil{
   background:#08090b !important;
 }
 
-body[data-performance="lite"]:before,
-body[data-performance="lite"][data-page="home"]:before,
-body[data-performance="lite"][data-page="updates"]:before,
-body[data-performance="lite"][data-page="gallery"]:before{
+body:before,
+body[data-page="home"]:before,
+body[data-page="updates"]:before,
+body[data-page="gallery"]:before{
   background:#08090b !important;
   background-image:none !important;
   opacity:1 !important;
-}
-
-body[data-performance="lite"][data-theme="classic2009"],
-body[data-performance="lite"][data-theme="classic2009"]:before{
-  background:#d8d0bc !important;
 }
 
