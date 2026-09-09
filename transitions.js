@@ -75,8 +75,6 @@
     if(navigating)return;
     if(!url||url.indexOf("undefined")!==-1)return;
     navigating=true;
-    playTransitionSong();
-
     body.setAttribute("data-state","leave");
 
     if(veil&&veilLogo){
