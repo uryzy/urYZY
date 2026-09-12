@@ -403,7 +403,12 @@ body{background:#f1f1ef;color:#111;}
     { id: "war", name: "WAR", file: "WAR.zip", icon: "WAR.jpg" },
     { id: "bad-bitch-playbook-prevultures1", name: "BAD BITCH PLAYBOOK [PRE VULTURES 1]", file: "Bad Bitch Playbook (Pre VULTURES 1).zip", icon: "BADBITCHPLAYBOOKPREVULTURES1.png" },
     { id: "bad-bitch-playbook", name: "BAD BITCH PLAYBOOK", file: "Bad Bitch Playbook.zip", icon: "BADBITCHPLAYBOOK.png" },
-    { id: "bad-bitch-playbook-2", name: "BAD BITCH PLAYBOOK VOL. 2", file: "Bad Bitch Playbook Vol. 2.zip", icon: "BADBITCHPLAYBOOK2.png" }
+    { id: "bad-bitch-playbook-2", name: "BAD BITCH PLAYBOOK VOL. 2", file: "Bad Bitch Playbook Vol. 2.zip", icon: "BADBITCHPLAYBOOK2.png" },
+    { id: "GRADUATE", name: "THE GRADUATE", file: "The Graduate.zip", icon: "TheGraduate.png" },
+    { id: "CRUEL-SUMMER", family: "CRUEL", name: "CRUEL SUMMER", file: "Cruel Summer.zip", icon: "CS.png" },
+    { id: "CRUEL-WINTER-FIRST", family: "CRUEL", name: "CRUEL WINTER [FIRST VERSION]", file: "Cruel Winter (First Version).zip", icon: "CWfv.png" },
+    { id: "CRUEL-WINTER-SECOND", family: "CRUEL", name: "CRUEL WINTER [SECOND VERSION]", file: "Cruel Winter (Second Version).zip", icon: "CWsv.png" },
+    { id: "PABLO", name: "THE DEATH OF PABLO", file: "The Death Of Pablo.zip", icon: "TDOP.png" }
   ];
 
   var descriptions = {
@@ -422,7 +427,12 @@ body{background:#f1f1ef;color:#111;}
     "WAR": "The unreleased James Blake-influenced project from the WAR era.",
     "BAD BITCH PLAYBOOK [PRE VULTURES 1]": "The earlier club-and-house direction before VULTURES 1.",
     "BAD BITCH PLAYBOOK": "The original collaborative project concept before it became VULTURES.",
-    "BAD BITCH PLAYBOOK VOL. 2": "A fan-assembled collection of VULTURES-era unreleased material."
+    "BAD BITCH PLAYBOOK VOL. 2": "A fan-assembled collection of VULTURES-era unreleased material.",
+    "THE GRADUATE": "An unreleased project preserved as a complete archive download.",
+    "CRUEL SUMMER": "A summer-era unreleased project with alternate sequences and unfinished ideas.",
+    "CRUEL WINTER [FIRST VERSION]": "The first preserved Cruel Winter sequence.",
+    "CRUEL WINTER [SECOND VERSION]": "A later Cruel Winter sequence with revised track ordering.",
+    "THE DEATH OF PABLO": "An unreleased Pablo-era project collected for the archive."
   };
 
   var downloadsEl = document.getElementById("downloadsList");
@@ -554,7 +564,10 @@ body{background:#f1f1ef;color:#111;}
       { title: "BULLY", match: function(file) { return file.name.indexOf("BULLY") === 0; } },
       { title: "CUCK", match: function(file) { return file.name === "CUCK" || file.name.indexOf("IN A PERFECT WORLD") === 0 || file.name === "WW3"; } },
       { title: "WAR", match: function(file) { return file.name === "WAR"; } },
-      { title: "VULTURES / BAD BITCH PLAYBOOK", match: function(file) { return file.name.indexOf("BAD BITCH PLAYBOOK") === 0; } }
+      { title: "VULTURES / BAD BITCH PLAYBOOK", match: function(file) { return file.name.indexOf("BAD BITCH PLAYBOOK") === 0; } },
+      { title: "GRADUATE", match: function(file) { return file.id === "GRADUATE"; } },
+      { title: "CRUEL", match: function(file) { return file.family === "CRUEL"; } },
+      { title: "PABLO", match: function(file) { return file.id === "PABLO"; } }
     ];
 
     var sectionHTML = sections.map(function(section) {

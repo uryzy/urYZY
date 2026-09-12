@@ -1,4 +1,4 @@
-const CACHE_NAME = "urYZY-v34";
+const CACHE_NAME = "urYZY-v37";
 
 const STATIC_FILES = [
     "/",
@@ -9,6 +9,7 @@ const STATIC_FILES = [
     "/offline.html",
     "/404.html",
     "/theme.css",
+    "/theme.js",
     "/footer.js",
     "/transitions.js",
 
@@ -23,6 +24,15 @@ const STATIC_FILES = [
     "/assets/BADBITCHPLAYBOOK2.png",
     "/assets/NO_CIERTO_BESAME_MAMA.png",
     "/assets/BULLYLP.png",
+    "/assets/TheGraduate.png",
+    "/assets/TDOP.png",
+    "/assets/CS.png",
+    "/assets/CWfv.png",
+    "/assets/CWsv.png",
+    "/assets/JIK.png",
+    "/assets/TLOP.jpg",
+    "/assets/earthspec4k.jpg",
+    "/assets/earthbump4k.jpg",
     "/assets/BULLYPV.png",
     "/assets/BULLYDG.png",
     "/assets/WW3.png",

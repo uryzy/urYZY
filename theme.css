@@ -1511,3 +1511,52 @@ body[data-page="gallery"]:before{
   opacity:1 !important;
 }
 
+body:before,
+body[data-page="home"]:before,
+body[data-page="updates"]:before,
+body[data-page="gallery"]:before{
+  background-color:var(--bg) !important;
+  background-image:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 76%,transparent) 48%,transparent 100%) !important;
+  opacity:.9 !important;
+}
+
+body[data-theme="light"]:before{background-image:linear-gradient(90deg,#f1f0ec 0%,rgba(241,240,236,.86),rgba(241,240,236,.34)) !important;}
+body[data-theme="king"]:before{background-image:linear-gradient(90deg,#071a52 0%,rgba(7,26,82,.82),rgba(7,26,82,.28)) !important;}
+body[data-theme="pablo"]:before{background-image:linear-gradient(90deg,#5b160d 0%,rgba(91,22,13,.82),rgba(91,22,13,.24)) !important;}
+body[data-theme="yzy"]:before{background-image:radial-gradient(circle at 72% 42%,rgba(255,255,255,.12),transparent 28%),#080808 !important;}
+
+body[data-theme="king"],body[data-theme="pablo"]{--line:rgba(255,255,255,.18);--line-strong:rgba(255,255,255,.3);}
+body[data-theme="king"] .surface-card,body[data-theme="pablo"] .surface-card,
+body[data-theme="yzy"] .surface-card{background:var(--surface) !important;border-color:var(--line) !important;}
+body[data-theme="king"] .btn.primary,body[data-theme="pablo"] .btn.primary,
+body[data-theme="yzy"] .btn.primary{background:var(--accent) !important;color:var(--accent-ink) !important;border-color:var(--accent) !important;}
+
+body[data-theme="yzy"] .yzy-globe canvas{
+  filter:grayscale(1) contrast(1.7) brightness(1.12) drop-shadow(0 0 34px rgba(255,255,255,.22));
+}
+
+html,body{background-color:var(--bg) !important;}
+body:before,
+body[data-page="home"]:before,
+body[data-page="updates"]:before,
+body[data-page="gallery"]:before{
+  position:fixed !important;
+  inset:0 !important;
+  width:auto !important;
+  height:auto !important;
+  right:0 !important;
+  bottom:0 !important;
+  left:0 !important;
+  top:0 !important;
+  mask-image:none !important;
+  -webkit-mask-image:none !important;
+  z-index:-2 !important;
+}
+html{scrollbar-width:thin;}
+
+.container,
+.site-footer{
+  position:relative;
+  z-index:1;
+}
+
